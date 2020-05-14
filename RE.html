@@ -16,25 +16,28 @@
             console.log(key)
             console.log(value)
         }*/
+        if (urlParams.has("v")){
+            const userVersion = urlParams.get("v");
+            const userVersionNumber = Number(userVersion.split('.').join(""));
+
+            var uptodate = ""
+            if (latestVersion == userVersionNumber){
+                uptodate = "You are up to date"
+            }
+            else if (latestVersion > userVersionNumber){
+                uptodate = "You should update"
+            }
+            else if (latestVersion < userVersionNumber){
+                uptodate = "Wow! You are from the future"
+            }
+            else {
+                uptodate = "Something went wrong"
+            }
+
+            document.getElementById("uptodate").innerHTML = uptodate
+            
+        }
         
-        const userVersion = urlParams.get("v");
-        const userVersionNumber = Number(userVersion.split('.').join(""));
-
-        var uptodate = ""
-        if (latestVersion == userVersionNumber){
-            uptodate = "You are up to date"
-        }
-        else if (latestVersion > userVersionNumber){
-            uptodate = "You should update"
-        }
-        else if (latestVersion < userVersionNumber){
-            uptodate = "Wow! You are from the future"
-        }
-        else {
-            uptodate = "Something went wrong"
-        }
-
-        document.getElementById("uptodate").innerHTML = uptodate
 
     }
     window.onload = myFunction;
