@@ -4,10 +4,33 @@
 <head>
     <title>Reynaers Extras</title>
 <head>
+
+<script>
+    function myFunction() {
+
+        console.log(window.location.href);
+
+        document.getElementById("demo").innerHTML = "Version";
+        const queryString = window.location.search;
+        console.log(queryString);
+        const urlParams = new URLSearchParams(queryString);
+        console.log(urlParams.get("v"));
+
+        var url = new URL(window.location.href);
+        console.log(url);
+        console.log(queryString);
+        var c = url.searchParams.get("c");
+        console.log(c);
+
+
+
+    }
+    window.onload = myFunction;
+</script>
 	
 <body>
   
-    <h1>Version</h1>
+    <h1 style="font-family:verdana;" id="demo">Preload</h1>
   
 </body>
 </html>
