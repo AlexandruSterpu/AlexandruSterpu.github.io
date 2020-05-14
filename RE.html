@@ -8,21 +8,33 @@
 <script>
     function myFunction() {
 
-        console.log(window.location.href);
+        const latestVersion = 200113
 
-        document.getElementById("demo").innerHTML = "Version";
-        const queryString = window.location.search;
-        console.log(queryString);
-        const urlParams = new URLSearchParams(queryString);
-        console.log(urlParams.get("v"));
+        console.log(window.location.search)
+        const urlParams = new URLSearchParams(window.location.search);
+        /*for (const [key, value] of urlParams.entries()) {
+            console.log(key)
+            console.log(value)
+        }*/
+        
+        const userVersion = urlParams.get("v");
+        const userVersionNumber = Number(userVersion.split('.').join(""));
 
-        var url = new URL(window.location.href);
-        console.log(url);
-        console.log(queryString);
-        var c = url.searchParams.get("c");
-        console.log(c);
+        var uptodate = ""
+        if (latestVersion == userVersionNumber){
+            uptodate = "You are up to date"
+        }
+        else if (latestVersion > userVersionNumber){
+            uptodate = "You should update"
+        }
+        else if (latestVersion < userVersionNumber){
+            uptodate = "Wow! You are from the future"
+        }
+        else {
+            uptodate = "Something went wrong"
+        }
 
-
+        document.getElementById("uptodate").innerHTML = uptodate
 
     }
     window.onload = myFunction;
@@ -30,7 +42,7 @@
 	
 <body>
   
-    <h1 style="font-family:verdana;" id="demo">Preload</h1>
+    <h1 style="font-family:verdana;" id="uptodate">Preload</h1>
   
 </body>
 </html>
